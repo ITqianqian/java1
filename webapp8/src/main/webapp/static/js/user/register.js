@@ -1,21 +1,21 @@
-$(function(){
-
+$(function () {
     $("#regBtn").click(function () {
         $("#regForm").submit();
     });
-
     $("#regForm").validate({
         errorElement:'span',
         errorClass:'text-error',
-        rules:{
+
+        roles:{
             username:{
                 required:true,
-                minlength:3,
+                minlength:5,
                 remote:"/validate/user"
             },
             password:{
                 required:true,
                 rangelength:[6,18]
+
             },
             repassword:{
                 required:true,
@@ -26,12 +26,14 @@ $(function(){
                 required:true,
                 email:true,
                 remote:"/validate/email"
+
             },
             phone:{
                 required:true,
                 rangelength:[11,11],
                 digits:true
-            }
+            },
+
         },
         messages:{
             username:{
@@ -61,29 +63,35 @@ $(function(){
         },
         submitHandler:function () {
             $.ajax({
-                url:"/reg",
+                url:"/req",
                 type:"post",
                 data:$("#regForm").serialize(),
-                beforeSend:function(){
-                    $("#regBtn").text("注册中...").attr("disabled","disabled");
+                beforeSend:function () {
+                    $("#regBtn").text("注册中").arrt("disabled","disabled");
+
                 },
-                success:function(data){
-                    if(data.state == 'success') {
+                success:function (data) {
+                    if(data.state=="success"){
                         alert("注册成功，请登录");
-                        window.location.href = "/login";
-                    } else {
-                        alert(data.message);
+                        window.location.href("/login")
+                    }else{
+                        alert(date.message);
                     }
+
                 },
                 error:function(){
                     alert("服务器错误");
                 },
+
                 complete:function(){
                     $("#regBtn").text("注册").removeAttr("disabled");
                 }
-            });
+            })
+            
         }
+
     });
 
 
-});
+
+})

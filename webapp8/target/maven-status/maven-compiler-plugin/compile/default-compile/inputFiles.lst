@@ -1,8 +1,11 @@
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\entity\User.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\web\BaseServlet.java
+E:\workspace\git\git22\webapp8\src\main\java\com\zqn\web\user\RegisterServlet.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\util\DbHelp.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\web\user\LoginServlet.java
+E:\workspace\git\git22\webapp8\src\main\java\com\zqn\dao\UserDao.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\exception\DataAccessException.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\util\ConnectionManager.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\web\HomeServlet.java
+E:\workspace\git\git22\webapp8\src\main\java\com\zqn\service\UserService.java
 E:\workspace\git\git22\webapp8\src\main\java\com\zqn\util\Page.java

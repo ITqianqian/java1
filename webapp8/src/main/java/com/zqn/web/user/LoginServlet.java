@@ -15,6 +15,6 @@ import java.io.IOException;
 public class LoginServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        forward("/home",req,resp);
+        forward("/user/login",req,resp);
     }
 }
