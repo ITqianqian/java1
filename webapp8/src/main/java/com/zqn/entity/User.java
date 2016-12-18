@@ -1,11 +1,21 @@
 package com.zqn.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by dell on 2016/12/15.
  */
-public class User {
+public class User implements Serializable {
+    //默认头像
+    public static final String DEFAULT_AVATAR_NAME = "default-avatar.jpg";
+    //用户状态
+    public static final Integer USERSTATE_UNACTIVE = 0;
+
+    public static final Integer USERSTATE_ACTIVE = 1;
+
+    public static final Integer USERSTATE_DISABLED = 2;
+
     private Integer id;
     private String username;
     private String password;

@@ -17,12 +17,14 @@ import java.util.Map;
 @WebServlet("/reg")
 public class RegisterServlet extends BaseServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         forward("/user/register",req,resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         String username=req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");

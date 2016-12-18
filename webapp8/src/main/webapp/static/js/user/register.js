@@ -6,7 +6,7 @@ $(function () {
         errorElement:'span',
         errorClass:'text-error',
 
-        roles:{
+        rules:{
             username:{
                 required:true,
                 minlength:5,
@@ -38,7 +38,7 @@ $(function () {
         messages:{
             username:{
                 required:"请输入账号",
-                minlength:"账号最少3个字符",
+                minlength:"账号最少5个字符",
                 remote:"账号已被占用"
             },
             password:{
@@ -63,7 +63,7 @@ $(function () {
         },
         submitHandler:function () {
             $.ajax({
-                url:"/req",
+                url:"/reg",
                 type:"post",
                 data:$("#regForm").serialize(),
                 beforeSend:function () {
@@ -72,8 +72,7 @@ $(function () {
                 },
                 success:function (data) {
                     if(data.state=="success"){
-                        alert("注册成功，请登录");
-                        window.location.href("/login")
+                        alert("注册成功，请查收邮件，激活帐号");
                     }else{
                         alert(date.message);
                     }
