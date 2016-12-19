@@ -24,28 +24,38 @@
             <span class="title"><i class="fa fa-sign-in"></i> 登录</span>
         </div>
 
-        <form action="" class="form-horizontal">
+        <form action="" class="form-horizontal" id="loginForm">
+            <c:if test="${not empty requestScope.message}">
+                <div class="alert alert-success">
+                        ${requestScope.message}
+                </div>
+            </c:if>
+            <c:if test="${not empty param.redirect}">
+                <div class="alert alert-success">
+                    请登录后再继续操作
+                </div>
+            </c:if>
             <div class="control-group">
                 <label class="control-label">账号</label>
                 <div class="controls">
-                    <input type="text">
+                    <input type="text" name="username">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">密码</label>
                 <div class="controls">
-                    <input type="text">
+                    <input type="password" name="password">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-                    <a href="foundPassword.html">忘记密码</a>
+                    <a href="/foundpassword">忘记密码</a>
                 </div>
             </div>
 
             <div class="form-actions">
-                <button class="btn btn-primary">登录</button>
+                <button class="btn btn-primary" type="button" id="loginBtn">登录</button>
 
                 <a class="pull-right" href="/reg">注册账号</a>
             </div>
@@ -58,5 +68,8 @@
     <!--box end-->
 </div>
 <!--container end-->
+<script src="/static/js/jquery-1.11.1.js"></script>
+<script src ="/static/js/jquery.validate.min.js"></script>
+<script src="/static/js/user/login.js"></script>
 </body>
 </html>

@@ -66,31 +66,27 @@ $(function () {
                 url:"/reg",
                 type:"post",
                 data:$("#regForm").serialize(),
-                beforeSend:function () {
-                    $("#regBtn").text("注册中").arrt("disabled","disabled");
-
+                beforeSend:function(){
+                    $("#regBtn").text("注册中...").attr("disabled","disabled");
                 },
-                success:function (data) {
-                    if(data.state=="success"){
-                        alert("注册成功，请查收邮件，激活帐号");
-                    }else{
-                        alert(date.message);
+                success:function(data){
+                    if(data.state == 'success') {
+                        alert("注册成功，请去邮箱激活账号");
+                    } else {
+                        alert(data.message);
                     }
-
                 },
                 error:function(){
                     alert("服务器错误");
                 },
-
                 complete:function(){
                     $("#regBtn").text("注册").removeAttr("disabled");
                 }
-            })
-            
-        }
+            });
+        },
 
     });
 
 
 
-})
+});

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class User implements Serializable {
     //默认头像
     public static final String DEFAULT_AVATAR_NAME = "default-avatar.jpg";
-    //用户状态
+    //用户状态0未激活，1正常  2已被禁用
     public static final Integer USERSTATE_UNACTIVE = 0;
 
     public static final Integer USERSTATE_ACTIVE = 1;
