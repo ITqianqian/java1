@@ -7,6 +7,7 @@ import com.google.common.cache.CacheBuilder;
 import com.zqn.dao.LoginLogDao;
 import com.zqn.dao.UserDao;
 import com.zqn.entity.LoginLog;
+import com.zqn.entity.Topic;
 import com.zqn.entity.User;
 import com.zqn.exception.ServiceException;
 import com.zqn.util.Config;
@@ -64,7 +65,7 @@ public class UserService {
         user.setAvatar(User.DEFAULT_AVATER_NAME);
         user.setState(User.USERSTATE_ACTIVE);
 
-        userDao.save(user);
+         userDao.save(user);
 
        /* Thread thread = new Thread(new Runnable() {
             @Override
