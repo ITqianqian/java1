@@ -38,11 +38,13 @@
                     <option value="${node.id}">${node.nodename}</option>
                 </c:forEach>
             </select>
-
+            <div class="form-actions" style="text-align: right">
+                <button id="sendBtn"class="btn btn-primary">发布主题</button>
+            </div>
         </form>
-        <div class="form-actions" style="text-align: right">
-            <button id="sendBtn"class="btn btn-primary">发布主题</button>
-        </div>
+
+
+
 
 
     </div>
@@ -91,11 +93,11 @@
                     type:"post",
                     date:$("#topicForm").serialize(),
                     beforesend:function () {
-                        $("#sendBtn").text("发布中").attr("disabled","disabled");
+                        $("#sendBtn").text("发布中...").attr("disabled","disabled");
                     },
-                    success:function (data) {
+                    success:function (json) {
                         if(data.statu=="success"){
-                            window.location.href="/topicdetail?topicid="+data.id;
+                            window.location.href="/topicdetail?topicid="+json.data.id;
                         }else{
                             alert("发帖异常")
                         }

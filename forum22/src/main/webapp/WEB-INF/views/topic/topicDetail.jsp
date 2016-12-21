@@ -7,7 +7,7 @@
     <link href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/js/editer/styles/simditor.css">
+    <link rel="stylesheet" href="/static/js/editer/styles/simditor.scss">
     <style>
         body{
             background-image: url(/static/img/bg.jpg);
@@ -158,15 +158,18 @@
             <span class="pull-left">请尽量让自己的回复能够对别人有帮助回复</span>
             <button class="btn btn-primary">发布</button>
         </div>
+
     </div>
 
 </div>
 <!--container end-->
-<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-<script src="/static/js/editer/scripts/module.min.js"></script>
-<script src="/static/js/editer/scripts/hotkeys.min.js"></script>
-<script src="/static/js/editer/scripts/uploader.min.js"></script>
-<script src="/static/js/editer/scripts/simditor.min.js"></script>
+<script src="/static/js/jquery-1.11.1.js"></script>
+<script src="/static/js/simditor/scripts/module.min.js"></script>
+<script src="/static/js/simditor/scripts/hotkeys.min.js"></script>
+<script src="/static/js/simditor/scripts/uploader.min.js"></script>
+<script src="/static/js/simditor/scripts/simditor.min.js"></script>
+<script src="/static/js/jquery.validate.min.js"></script>
+
 <script>
     $(function(){
         var editor = new Simditor({

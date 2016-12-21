@@ -18,6 +18,9 @@ public class Topic {
     private Integer userid;
     private Integer nodeid;
 
+    private User user;
+    private Node node;
+
     public Integer getId() {
         return id;
     }
@@ -104,5 +107,21 @@ public class Topic {
 
     public void setNodeid(Integer nodeid) {
         this.nodeid = nodeid;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
     }
 }
