@@ -23,16 +23,16 @@ public class TopicService {
        return nodeDao.findAllnode();
     }
 
-    public Topic addNewTopic(String title, String content, String nodeid,User user) {
+    public Topic addNewTopic(String title, String content, String nodeid,Integer userid) {
         Topic topic =new Topic();
         topic.setTitle(title);
         topic.setContent(content);
-        topic.setNodeid(Integer.parseInt(nodeid));
-        topic.setUserid(user.getId());
+        topic.setNodeid(Integer.valueOf(nodeid));
+        topic.setUserid(userid);
 
-        Integer topiId = topicDao.addNewTopic(topic);
+        Integer topicId = topicDao.save(topic);
 
-        topic.setId(topiId);
+        topic.setId(topicId);
 
         return topic;
 
@@ -40,7 +40,6 @@ public class TopicService {
     }
 
     public Topic findByTopicId(String topicId) {
-
         if(StringUtils.isNumeric(topicId)){
             Topic topic = topicDao.findByTopicId(topicId);
             if(topic !=null){

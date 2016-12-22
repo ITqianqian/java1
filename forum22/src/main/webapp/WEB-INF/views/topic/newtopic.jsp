@@ -91,12 +91,12 @@
                 $.ajax({
                     url:"/newtopic",
                     type:"post",
-                    date:$("#topicForm").serialize(),
+                    data:$("#topicForm").serialize(),
                     beforesend:function () {
                         $("#sendBtn").text("发布中...").attr("disabled","disabled");
                     },
                     success:function (json) {
-                        if(data.statu=="success"){
+                        if(json.state=="success"){
                             window.location.href="/topicdetail?topicid="+json.data.id;
                         }else{
                             alert("发帖异常")

@@ -4,7 +4,6 @@ import com.zqn.dto.JsonResult;
 import com.zqn.entity.Topic;
 import com.zqn.service.TopicService;
 import com.zqn.web.BaseServlet;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +19,8 @@ public class TopicDetailServlet extends BaseServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String topicId = req.getParameter("topicid");
-        TopicService topicService = new TopicService();
 
+        TopicService topicService = new TopicService();
         JsonResult jsonResult = null;
         try {
             Topic topic = topicService.findByTopicId(topicId);

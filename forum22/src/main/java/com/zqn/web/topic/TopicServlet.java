@@ -1,6 +1,7 @@
 package com.zqn.web.topic;
 
 
+import com.google.common.collect.Maps;
 import com.zqn.dto.JsonResult;
 import com.zqn.entity.Node;
 import com.zqn.entity.Topic;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
+import static java.lang.Integer.valueOf;
 
 /**
  * Created by dell on 2016/12/21.
@@ -37,9 +41,13 @@ public class TopicServlet extends BaseServlet {
         //获取session里面的User
         User user = (User) req.getSession().getAttribute("curr_user");
 
-        Topic topic = topicService.addNewTopic(title,content,nodeid,user);
+        Topic topic = topicService.addNewTopic(title,content,nodeid,user.getId());
 
-        JsonResult jsonResult = new JsonResult(topic);
+       /* Map<String,Object> result = Maps.newHashMap();
+        result.put("result","success");
+        result.put("topic",topic);
+*/
+       JsonResult jsonResult = new JsonResult(topic);
 
         renderJson(jsonResult,resp);
 
