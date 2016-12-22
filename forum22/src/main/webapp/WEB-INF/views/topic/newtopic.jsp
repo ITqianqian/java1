@@ -38,10 +38,11 @@
                     <option value="${node.id}">${node.nodename}</option>
                 </c:forEach>
             </select>
-            <div class="form-actions" style="text-align: right">
-                <button id="sendBtn"class="btn btn-primary">发布主题</button>
-            </div>
+
         </form>
+        <div class="form-actions" style="text-align: right">
+            <button id="sendBtn"class="btn btn-primary">发布主题</button>
+        </div>
 
 
 
@@ -95,16 +96,15 @@
                     beforesend:function () {
                         $("#sendBtn").text("发布中...").attr("disabled","disabled");
                     },
-                    success:function (json) {
-                        if(json.state=="success"){
+                    success:function(json){
+                        if(json.state == "success"){
                             window.location.href="/topicdetail?topicid="+json.data.id;
-                        }else{
-                            alert("发帖异常")
+                        }else {
+                            alert("新增主题异常");
                         }
                     },
-                    error:function () {
-                        alert("服务器异常")
-                        
+                    error:function(){
+                        alert("服务器异常");
                     },
                     complete:function () {
                         $("#sendBtn").text("发布").removeAttr("disabled");
