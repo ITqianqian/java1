@@ -151,13 +151,15 @@
 
     <div class="box" style="margin:20px 0px;">
         <div class="talk-item muted" style="font-size: 12px"><i class="fa fa-plus"></i> 添加一条新回复</div>
-        <form action="" style="padding: 15px;margin-bottom:0px;">
-            <textarea name="" id="editor"></textarea>
+        <form action="/newReply" method="post" style="padding: 15px;margin-bottom:0px;">
+            <input name="topicid" type="hidden" value="${topic.id}">
+            <textarea name="content" id="editor"></textarea>
+            <div class="talk-item muted" style="text-align: right;font-size: 12px">
+                <span class="pull-left">请尽量让自己的回复能够对别人有帮助回复</span>
+                <button class="btn btn-primary" id="replyBtn">发布</button>
+            </div>
         </form>
-        <div class="talk-item muted" style="text-align: right;font-size: 12px">
-            <span class="pull-left">请尽量让自己的回复能够对别人有帮助回复</span>
-            <button class="btn btn-primary">发布</button>
-        </div>
+
     </div>
 
 </div>
@@ -176,11 +178,10 @@
             //optional options
         });
         $("#replyBtn").click(function(){
-           $("#replyForm").submit();
+            $("#replyForm").submit();
         });
 
     });
-
 </script>
 
 </body>

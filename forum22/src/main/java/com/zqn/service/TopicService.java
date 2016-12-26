@@ -1,9 +1,11 @@
 package com.zqn.service;
 
 import com.zqn.dao.NodeDao;
+import com.zqn.dao.ReplyDao;
 import com.zqn.dao.TopicDao;
 import com.zqn.dao.UserDao;
 import com.zqn.entity.Node;
+import com.zqn.entity.Reply;
 import com.zqn.entity.Topic;
 import com.zqn.entity.User;
 import com.zqn.exception.ServiceException;
@@ -19,6 +21,7 @@ public class TopicService {
     private UserDao userDao = new UserDao();
     private NodeDao nodeDao = new NodeDao();
     private TopicDao topicDao = new TopicDao();
+    private ReplyDao replyDao = new ReplyDao();
     public List<Node> findAllNode() {
        return nodeDao.findAllnode();
     }
@@ -56,6 +59,19 @@ public class TopicService {
             throw new ServiceException("参数错误");
 
         }
+
+    }
+
+
+    public void addNewReply(String topicid, String content, User user) {
+        Reply reply = new Reply();
+        reply.setContent(content);
+        reply.setTopicid(Integer.valueOf(topicid));
+        reply.setUserid(user.getId());
+
+        replyDao.addNewReply(reply);
+
+
 
     }
 }
