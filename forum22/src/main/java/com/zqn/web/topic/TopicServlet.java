@@ -37,7 +37,9 @@ public class TopicServlet extends BaseServlet {
         String token = auth.uploadToken(Config.get("qiniu.bucket"),null,3600,stringMap);
 
         List<Node> nodeList = topicService.findAllNode();
+        List<Topic>topicList = topicService.findBytopics();
         req.setAttribute("nodeList",nodeList);
+        req.setAttribute("topicList",topicList);
         req.setAttribute("token",token);
         forward("topic/newtopic.jsp",req,resp);
     }

@@ -22,7 +22,9 @@ public class TopicService {
     private NodeDao nodeDao = new NodeDao();
     private TopicDao topicDao = new TopicDao();
     private ReplyDao replyDao = new ReplyDao();
+
     public List<Node> findAllNode() {
+
        return nodeDao.findAllnode();
     }
 
@@ -54,6 +56,7 @@ public class TopicService {
     }
 
     public Topic findByTopicId(String topicId) {
+        System.out.println(topicId);
         if(StringUtils.isNumeric(topicId)){
             Topic topic = topicDao.findByTopicId(topicId);
             if(topic !=null){
@@ -84,5 +87,15 @@ public class TopicService {
 
 
 
+    }
+
+    public List<Topic> findBytopics() {
+        return topicDao.findAllTopic();
+    }
+
+    public List<Reply> findReplyByTopic(String topicId) {
+        Integer topicid = Integer.valueOf(topicId);
+
+        return replyDao.findAllReplyByTopic(topicid);
     }
 }

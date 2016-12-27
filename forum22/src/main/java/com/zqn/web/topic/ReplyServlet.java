@@ -1,5 +1,6 @@
 package com.zqn.web.topic;
 
+import com.zqn.entity.Reply;
 import com.zqn.entity.User;
 import com.zqn.exception.ServiceException;
 import com.zqn.service.TopicService;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by dell on 2016/12/24.
@@ -27,6 +29,7 @@ public class ReplyServlet extends BaseServlet {
         if (StringUtils.isNumeric(topicid)){
             try {
                 topicService.addNewReply(topicid, content, user);
+
             }catch(ServiceException e){
                 resp.sendError(404,e.getMessage());
             }

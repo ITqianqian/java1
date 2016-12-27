@@ -48,106 +48,34 @@
     </div>
     <!--box end-->
 
+
     <div class="box" style="margin-top:20px;">
         <div class="talk-item muted" style="font-size: 12px">
-            9个回复 | 直到2015年12月25日 22:23:34
+           9个回复
         </div>
-        <div class="talk-item">
-            <table class="talk-table">
-                <tr>
-                    <td width="50">
-                        <img class="avatar" src="http://7xp5t4.com1.z0.glb.clouddn.com/Fqb8f9uDknAt2ilBoY-ipSZRMes-?imageView2/1/w/40/h/40" alt="">
-                    </td>
-                    <td width="auto">
-                        <a href="" style="font-size: 12px">fankay</a> <span style="font-size: 12px" class="reply">4小时前</span>
-                        <br>
-                        <p style="font-size: 14px">不知道国内有哪些公司开始用 react-native 了呢？我就知道天猫 Pad 版部分</p>
-                    </td>
-                    <td width="70" align="right" style="font-size: 12px">
-                        <a href="" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
-                        <span class="badge">1</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <c:forEach items="${replyList}" var="reply" varStatus="vs">
+            <div class="talk-item">
+                <table class="talk-table">
+                    <tr>
+                        <a name="reply${vs.count}"></a>
+                        <td width="50">
+                            <img class="avatar" src="${reply.user.avatar}?imageView2/1/w/40/h/40" alt="">
+                        </td>
+                        <td width="auto">
+                            <a href="" style="font-size: 12px">${reply.user.username}</a> <span style="font-size: 12px" class="reply">${reply.createtime}</span>
+                            <br>
+                            <p style="font-size: 14px">${reply.content}</p>
+                        </td>
+                        <td width="70" align="right" style="font-size: 12px">
+                            <a href="javascript:;" rel="${vs.count}" class="replyLink" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
+                            <span class="badge">${vs.count}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </c:forEach>
 
-        <div class="talk-item">
-            <table class="talk-table">
-                <tr>
-                    <td width="50">
-                        <img class="avatar" src="http://7xp5t4.com1.z0.glb.clouddn.com/Fqb8f9uDknAt2ilBoY-ipSZRMes-?imageView2/1/w/40/h/40" alt="">
-                    </td>
-                    <td width="auto">
-                        <a href="" style="font-size: 12px">fankay</a> <span style="font-size: 12px" class="reply">4小时前</span>
-                        <br>
-                        <p style="font-size: 14px">不知道国内有哪些公司开始用 react-native 了呢？我就知道天猫 Pad 版部分</p>
-                    </td>
-                    <td width="70" align="right" style="font-size: 12px">
-                        <a href="" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
-                        <span class="badge">2</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
 
-        <div class="talk-item">
-            <table class="talk-table">
-                <tr>
-                    <td width="50">
-                        <img class="avatar" src="http://7xp5t4.com1.z0.glb.clouddn.com/Fqb8f9uDknAt2ilBoY-ipSZRMes-?imageView2/1/w/40/h/40" alt="">
-                    </td>
-                    <td width="auto">
-                        <a href="" style="font-size: 12px">fankay</a> <span style="font-size: 12px" class="reply">4小时前</span>
-                        <br>
-                        <p style="font-size: 14px">不知道国内有哪些公司开始用 react-native 了呢？我就知道天猫 Pad 版部分</p>
-                    </td>
-                    <td width="70" align="right" style="font-size: 12px">
-                        <a href="" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
-                        <span class="badge">3</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="talk-item">
-            <table class="talk-table">
-                <tr>
-                    <td width="50">
-                        <img class="avatar" src="http://7xp5t4.com1.z0.glb.clouddn.com/Fqb8f9uDknAt2ilBoY-ipSZRMes-?imageView2/1/w/40/h/40" alt="">
-                    </td>
-                    <td width="auto">
-                        <a href="" style="font-size: 12px">fankay</a> <span style="font-size: 12px" class="reply">4小时前</span>
-                        <br>
-                        <p style="font-size: 14px">不知道国内有哪些公司开始用 react-native 了呢？我就知道天猫 Pad 版部分</p>
-                    </td>
-                    <td width="70" align="right" style="font-size: 12px">
-                        <a href="" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
-                        <span class="badge">4</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="talk-item">
-            <table class="talk-table">
-                <tr>
-                    <td width="50">
-                        <img class="avatar" src="http://7xp5t4.com1.z0.glb.clouddn.com/Fqb8f9uDknAt2ilBoY-ipSZRMes-?imageView2/1/w/40/h/40" alt="">
-                    </td>
-                    <td width="auto">
-                        <a href="" style="font-size: 12px">fankay</a> <span style="font-size: 12px" class="reply">4小时前</span>
-                        <br>
-                        <p style="font-size: 14px">不知道国内有哪些公司开始用 react-native 了呢？我就知道天猫 Pad 版部分</p>
-                    </td>
-                    <td width="70" align="right" style="font-size: 12px">
-                        <a href="" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
-                        <span class="badge">50</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
     <c:choose>
         <c:when test="${not empty sessionScope.curr_user}">
             <div class="box" style="margin:20px 0px;">
@@ -155,11 +83,12 @@
                 <form action="/newReply" method="post" style="padding: 15px;margin-bottom:0px;">
                     <input name="topicid" type="hidden" value="${topic.id}">
                     <textarea name="content" id="editor"></textarea>
+                    <div class="talk-item muted" style="text-align: right;font-size: 12px">
+                        <span class="pull-left">请尽量让自己的回复能够对别人有帮助回复</span>
+                        <button class="btn btn-primary" id="replyBtn">发布</button>
+                    </div>
                 </form>
-                <div class="talk-item muted" style="text-align: right;font-size: 12px">
-                    <span class="pull-left">请尽量让自己的回复能够对别人有帮助回复</span>
-                    <button class="btn btn-primary" id="replyBtn">发布</button>
-                </div>
+
             </div>
         </c:when>
         <c:otherwise>

@@ -4,6 +4,9 @@ import com.zqn.entity.Node;
 import com.zqn.entity.Topic;
 import com.zqn.util.DbHelp;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import java.util.List;
 
 /**
  * Created by dell on 2016/12/21.
@@ -20,4 +23,8 @@ public class TopicDao {
         return topic;
     }
 
+    public List<Topic> findAllTopic() {
+        String sql = "select * from t_topic";
+        return DbHelp.query(sql,new BeanListHandler<>(Topic.class));
+    }
 }
