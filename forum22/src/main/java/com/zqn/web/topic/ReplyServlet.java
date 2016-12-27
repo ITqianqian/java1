@@ -21,7 +21,6 @@ public class ReplyServlet extends BaseServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String topicid = req.getParameter("topicid");
         String content = req.getParameter("content");
-
         TopicService topicService = new TopicService();
         User user = (User) req.getSession().getAttribute("curr_user");
 
@@ -34,7 +33,7 @@ public class ReplyServlet extends BaseServlet {
         }else{
             resp.sendError(404);
         }
-        resp.sendRedirect("/topicDetail?topicid="+topicid);
+        resp.sendRedirect("/topicdetail?topicid="+topicid);
     }
 
 

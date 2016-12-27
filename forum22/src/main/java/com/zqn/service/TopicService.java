@@ -35,7 +35,18 @@ public class TopicService {
 
         Integer topicId = topicDao.save(topic);
 
+        if(topicId != null){
+            Node node = nodeDao.findNodeById(Integer.valueOf(nodeid));
+            node.setTopicnum(node.getTopicnum()+1);
+            nodeDao.update(node);
+        }else {
+            System.out.println("发帖失败");
+        }
+
         topic.setId(topicId);
+
+
+
 
         return topic;
 
