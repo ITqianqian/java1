@@ -28,7 +28,6 @@ public class JsonResult {
         this.message = message;
     }
 
-
     public String getState() {
         return state;
     }

@@ -1,6 +1,5 @@
 package com.zqn.web.user;
 
-
 import com.zqn.service.UserService;
 import com.zqn.util.StringUtils;
 import com.zqn.web.BaseServlet;
@@ -10,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 
 @WebServlet("/validate/user")
 public class ValidateUserServlet extends BaseServlet {
@@ -28,4 +26,3 @@ public class ValidateUserServlet extends BaseServlet {
         }
     }
 }
-

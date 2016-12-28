@@ -1,22 +1,22 @@
 package com.zqn.service;
 
-
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-
 import com.zqn.dao.LoginLogDao;
+import com.zqn.dao.NotifyDao;
 import com.zqn.dao.UserDao;
-import com.zqn.entity.LoginLog;
-import com.zqn.entity.Topic;
-import com.zqn.entity.User;
+import com.zqn.entitiy.LoginLog;
+import com.zqn.entitiy.Notify;
+import com.zqn.entitiy.User;
 import com.zqn.exception.ServiceException;
 import com.zqn.util.Config;
 import com.zqn.util.EmailUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -26,6 +26,7 @@ public class UserService {
     private Logger logger = LoggerFactory.getLogger(UserService.class);
     private UserDao userDao = new UserDao();
     private LoginLogDao loginLogDao = new LoginLogDao();
+    private NotifyDao notifyDao=new NotifyDao();
 
     //发送激活邮件的TOKEN缓存
     private static Cache<String, String> cache = CacheBuilder.newBuilder()
@@ -63,9 +64,9 @@ public class UserService {
         user.setEmail(email);
         user.setPhone(phone);
         user.setAvatar(User.DEFAULT_AVATER_NAME);
-        user.setState(User.USERSTATE_ACTIVE);
+        user.setState(User.USERSTATE_UNACTIVE);
 
-         userDao.save(user);
+        userDao.save(user);
 
        /* Thread thread = new Thread(new Runnable() {
             @Override
@@ -243,6 +244,23 @@ public class UserService {
     public void updateAvatar(User user, String fileKey) {
         user.setAvatar(fileKey);
         userDao.update(user);
+
+    }
+
+
+    public List<Notify> findByUser(User user) {
+        return notifyDao.findByUser(user.getId());
+    }
+
+    public void updateNotifyStateByIds(String ids) {
+        String idArray[] = ids.split(",");
+        for (int i= 0 ;i <idArray.length;i++ ){
+            Notify notify = notifyDao.findById(idArray[i]);
+            notify.setState(Notify.NOTIFY_STATE_READ);
+            notify.setReadtime(new Timestamp(DateTime.now().getMillis()));
+            notifyDao.update(notify);
+        }
+
 
     }
 }

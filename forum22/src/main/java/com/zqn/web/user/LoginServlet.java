@@ -1,7 +1,6 @@
 package com.zqn.web.user;
-
 import com.google.common.collect.Maps;
-import com.zqn.entity.User;
+import com.zqn.entitiy.User;
 import com.zqn.exception.ServiceException;
 import com.zqn.service.UserService;
 import com.zqn.web.BaseServlet;

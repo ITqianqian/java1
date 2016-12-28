@@ -12,8 +12,8 @@ public class LoginFilter extends AbstractFilter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-       String validateUrl = filterConfig.getInitParameter("validateUrl");
-       urlList = Arrays.asList(validateUrl.split(","));
+        String validateUrl = filterConfig.getInitParameter("validateUrl");
+        urlList = Arrays.asList(validateUrl.split(","));
     }
 
     @Override
@@ -41,12 +41,12 @@ public class LoginFilter extends AbstractFilter {
                         for(int i=0;i<valString.length;i++){
                             param = key + "=" + valString[i] +"&";
                             requestUrl += param;
-                         }
+                        }
                     }
-                requestUrl = requestUrl.substring(0,requestUrl.length()-1);
-                System.out.println("requestUrl = " + requestUrl);
+                    requestUrl = requestUrl.substring(0,requestUrl.length()-1);
+                    System.out.println("requestUrl = " + requestUrl);
                 }
-                 //去登录页面
+                //去登录页面
                 response.sendRedirect("/login?redirect="+requestUrl);
             } else {
                 filterChain.doFilter(request,response);

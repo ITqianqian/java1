@@ -26,6 +26,7 @@
         <commons-codec-version>1.10</commons-codec-version>
         <commons-email-version>1.4</commons-email-version>
         <qiniu-version>7.1.0</qiniu-version>
+        <joda-version>2.9.4</joda-version>
     </properties>
 
     <dependencies>
@@ -129,6 +130,12 @@
                     <groupId>com.google.code.gson</groupId>
                 </exclusion>
             </exclusions>
+
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-version}</version>
         </dependency>
 
     </dependencies>

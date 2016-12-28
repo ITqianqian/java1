@@ -1,9 +1,10 @@
 package com.zqn.web.user;
 
 import com.google.common.collect.Maps;
+
 import com.qiniu.util.Auth;
 import com.zqn.dto.JsonResult;
-import com.zqn.entity.User;
+import com.zqn.entitiy.User;
 import com.zqn.exception.ServiceException;
 import com.zqn.service.UserService;
 import com.zqn.util.Config;
@@ -69,8 +70,6 @@ public class SettingServlet extends BaseServlet {
         }catch (ServiceException e){
             JsonResult result=new JsonResult(e.getMessage());
             renderJson(result,resp);
-
-
         }
 
     }

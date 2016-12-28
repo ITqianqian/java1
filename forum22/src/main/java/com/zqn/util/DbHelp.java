@@ -1,14 +1,16 @@
 package com.zqn.util;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import com.zqn.exception.DataAccessException;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
+
+
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class DbHelp {
 
@@ -25,12 +27,25 @@ public class DbHelp {
 
             logger.debug("SQL: {}",sql);
         } catch (SQLException e) {
+            e.printStackTrace();
+            //logger.error("执行{}异常",sql);
+            //throw new DataAccessException("执行"+ sql + "异常",e);
+        }
+    }
+
+
+    public static Integer insert(String sql,Object... params) throws DataAccessException {
+        try {
+            QueryRunner queryRunner = new QueryRunner(ConnectionManager.getDataSource());
+            logger.debug("SQL: {}",sql);
+           return queryRunner.insert(sql, new ScalarHandler<Long>(),params).intValue();
+        } catch (SQLException e) {
             logger.error("执行{}异常",sql);
             throw new DataAccessException("执行"+ sql + "异常",e);
         }
     }
 
-    public static <T> T query(String sql, ResultSetHandler<T> handler, Object... params) throws DataAccessException {
+    public static <T> T query(String sql,ResultSetHandler<T> handler,Object... params) throws DataAccessException {
 
         QueryRunner queryRunner = new QueryRunner(ConnectionManager.getDataSource());
         try {
@@ -41,16 +56,6 @@ public class DbHelp {
         } catch (SQLException e) {
             logger.error("执行{}异常",sql);
             throw new DataAccessException("执行"+ sql + "异常",e);
-        }
-    }
-    public static Integer insert(String sql,Object... params) throws DataAccessException {
-        try {
-            QueryRunner queryRunner = new QueryRunner(ConnectionManager.getDataSource());
-            logger.debug("SQL: {}",sql);
-            return queryRunner.insert(sql,new ScalarHandler<Long>(),params).intValue();
-        } catch (SQLException ex) {
-            logger.error("执行{}异常",sql);
-            throw new DataAccessException("执行"+ sql + "异常",ex);
         }
     }
 

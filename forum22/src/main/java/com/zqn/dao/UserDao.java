@@ -1,7 +1,7 @@
 package com.zqn.dao;
 
 
-import com.zqn.entity.User;
+import com.zqn.entitiy.User;
 import com.zqn.util.DbHelp;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 

@@ -1,10 +1,9 @@
 package com.zqn.web.user;
 
-
-
-import com.zqn.entity.User;
+import com.zqn.entitiy.User;
 import com.zqn.service.UserService;
 import com.zqn.web.BaseServlet;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +16,22 @@ public class ValidateEmailServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email=req.getParameter("email");
+        String type=req.getParameter("type");
+
+        if(StringUtils.isNotEmpty(type) &&"1".equals(type)){
+            User currentUser=getCurrentUser(req);
+            if(currentUser!=null){
+                if(currentUser.getEmail().equals(email)){
+                    renderText("true",resp);
+                    return;
+                }
+            }
+        }
+
         UserService userService=new UserService();
         User user=userService.findByEmail(email);
+
+
 
         if(user==null){
             renderText("true",resp);

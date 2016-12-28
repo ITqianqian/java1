@@ -8,6 +8,7 @@
     <link href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/sweetalert.css">
 </head>
 <body>
 <%@ include file="../include/navbar.jsp"%>
@@ -32,7 +33,7 @@
             <div class="control-group">
                 <label class="control-label">密码</label>
                 <div class="controls">
-                    <input type="password" name="password">
+                    <input id="password" type="password" name="password">
                 </div>
             </div>
             <div class="control-group">
@@ -59,5 +60,6 @@
 <script src="/static/js/jquery-1.11.1.js"></script>
 <script src="/static/js/jquery.validate.min.js"></script>
 <script src="/static/js/user/login.js"></script>
+<script src="/static/js/sweetalert.min.js"></script>
 </body>
 </html>

@@ -5,9 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 
-/**
- * Created by Administrator on 2016/12/16 0016.
- */
 //将ISO8859-1的字符串转换为UTF-8的字符串
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
     private static Logger logger= LoggerFactory.getLogger(StringUtils.class);

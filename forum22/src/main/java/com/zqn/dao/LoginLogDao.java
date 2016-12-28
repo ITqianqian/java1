@@ -1,7 +1,6 @@
 package com.zqn.dao;
 
-
-import com.zqn.entity.LoginLog;
+import com.zqn.entitiy.LoginLog;
 import com.zqn.util.DbHelp;
 
 /**

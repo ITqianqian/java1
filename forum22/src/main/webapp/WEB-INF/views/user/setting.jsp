@@ -81,7 +81,7 @@
             <div class="control-group">
                 <label class="control-label">当前头像</label>
                 <div class="controls">
-                    <img id="avatar" src="http://oib40jpn2.bkt.clouddn.com/${sessionScope.curr_user.avatar}?imageView2/1/w/40/h/40" class="img-circle" alt="">
+                    <img id="avatar" src="http://oifocnk31.bkt.clouddn.com/${sessionScope.curr_user.avatar}?imageView2/1/w/40/h/40" class="img-circle" alt="">
                 </div>
             </div>
             <hr>
@@ -129,9 +129,11 @@
             $.post("/setting?action=avatar",{"fileKey":fileKey})
                 .done(function (data) {
                     if(data.state=='success'){
-                        var url="http://oib40jpn2.bkt.clouddn.com/"+fileKey;
+                        var url="http://oifocnk31.bkt.clouddn.com/"+fileKey;
                         $("#avatar").attr("src",url+"?imageView2/1/w/40/h/40");
                         $("#navbar_avatar").attr("src",url+"?imageView2/1/w/20/h/20");
+
+                        alert("头像上传成功");
                     }
 
                 }).error(function () {

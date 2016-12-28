@@ -1,20 +1,22 @@
 package com.zqn.util;
 
-import com.zqn.exception.DataAccessException;
-import org.apache.commons.dbcp2.BasicDataSource;
-
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
+import com.zqn.exception.DataAccessException;
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import javax.sql.DataSource;
+
 public class ConnectionManager {
 
-    private static String DRIVER ;
-    private static String URL ;
-    private static String USERNAME ;
-    private static String PASSWORD ;
+    private static String DRIVER ;//= "com.mysql.jdbc.Driver";
+    private static String URL ;//= "jdbc:mysql:///lib_22";
+    private static String USERNAME ;//= "root";
+    private static String PASSWORD ;//= "rootroot";
     private static BasicDataSource dataSource = new BasicDataSource();
 
     static {

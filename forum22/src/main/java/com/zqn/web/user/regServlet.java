@@ -33,7 +33,6 @@ public class regServlet extends BaseServlet {
         try {
             UserService userService = new UserService();
             userService.saveNewUser(username,password,email,phone);
-            System.out.println(email);
 
             result.put("state", "success");
         }catch (Exception e){
