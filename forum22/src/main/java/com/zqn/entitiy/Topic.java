@@ -126,10 +126,12 @@ public class Topic {
     }
 
     public boolean isEdit(){
-        DateTime dateTime=new DateTime(getCreatetime());
-        if(dateTime.plusMinutes(5).isAfterNow()&&getReplynum()==0){
+        DateTime dateTime = new DateTime(getCreatetime());
+        if(dateTime.plusMinutes(50).isAfterNow() && getReplynum() == 0){
             return true;
+        }else{
+            return false;
         }
-        return false;
+
     }
 }

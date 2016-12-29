@@ -30,6 +30,10 @@ public class HomeServlet extends BaseServlet {
         }
         TopicService topicService=new TopicService();
         List<Node> nodeList=topicService.findAllNode();
+        for(Node node : nodeList){
+            node.setNodename(new String(node.getNodename().getBytes("ISO-8859-1"),"UTF-8"));
+        }
+
         Page<Topic> page=topicService.findAllTopics(nodeid,pageNo);
         req.setAttribute("nodeList",nodeList);
         req.setAttribute("page",page);

@@ -61,6 +61,8 @@
                 <c:if test="${sessionScope.curr_user.id == topic.userid and topic.edit}">
                     <li><a href="/topicEdit?topicid=${topic.id}">编辑</a></li>
                 </c:if>
+
+
             </ul>
             <ul class="unstyled inline pull-right muted">
                 <li>${topic.clicknum}次点击</li>

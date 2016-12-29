@@ -43,9 +43,9 @@ public class NewTopicServlet extends BaseServlet {
         User user= (User) req.getSession().getAttribute("curr_user");
         // User user=getCurrentUser(req);
         JsonResult jsonResult=null;
-        Topic topic=null;
+
         try {
-             topic = topicService.addNewTopic(title, content, Integer.valueOf(nodeid), user.getId());
+             Topic topic = topicService.addNewTopic(title, content, Integer.valueOf(nodeid), user.getId());
              jsonResult=new JsonResult(topic);
         }catch (ServiceException e){
             jsonResult=new JsonResult(e.getMessage());

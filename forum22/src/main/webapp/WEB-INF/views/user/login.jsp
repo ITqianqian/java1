@@ -47,6 +47,7 @@
                 <button class="btn btn-primary" type="button" id="loginBtn">登录</button>
 
                 <a class="pull-right" href="/reg">注册账号</a>
+
             </div>
 
         </form>

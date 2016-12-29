@@ -9,7 +9,7 @@
 <div class="header-bar">
     <div class="container">
         <a href="/home" class="brand">
-            <i class="fa fa-coffee"></i>
+            <i class="fa fa-weibo"></i>
         </a>
         <span class="hide" id="isLogin"><c:if test="${not empty sessionScope.curr_user}">1</c:if></span>
         <ul class="unstyled inline pull-right">
@@ -17,7 +17,7 @@
                 <c:when test="${not empty sessionScope.curr_user}">
                     <li>
                         <a href="/setting">
-                            <img id="navbar_avatar" src="http://oifocnk31.bkt.clouddn.com/${sessionScope.curr_user.avatar}?imageView2/1/w/20/h/20" class="img-circle" alt="">
+                            <img id="navbar_avatar" src="http://oib40jpn2.bkt.clouddn.com/${sessionScope.curr_user.avatar}?imageView2/1/w/20/h/20" class="img-circle" alt="">
                         </a>
                     </li>
                     <li>
@@ -35,6 +35,8 @@
                 </c:when>
                 <c:otherwise>
                     <li><a href="/login"><i class="fa fa-sign-in"></i></a></li>
+                    <li><a href="/admin/login"><i class="fa fa-user"></i></a></li>
+
                 </c:otherwise>
             </c:choose>
 
