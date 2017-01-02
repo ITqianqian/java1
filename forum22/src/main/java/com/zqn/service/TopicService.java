@@ -7,12 +7,10 @@ import com.zqn.exception.ServiceException;
 import com.zqn.util.Config;
 import com.zqn.util.Page;
 import org.apache.commons.lang3.StringUtils;
-
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 
 public class TopicService {
     NodeDao nodeDao=new NodeDao();
@@ -171,6 +169,57 @@ public class TopicService {
          List<Topic> topicList=topicDao.findAll(map);
          topicPage.setItems(topicList);
          return topicPage;
+
+    }
+
+    public Page<TopicReplyCount> getTopicAndReplyNumByDayList(Integer pageNo) {
+        int count = topicDao.countTopicByDay();
+        Page<TopicReplyCount> page = new Page<>(count,pageNo);
+
+        List<TopicReplyCount> countLit =  topicDao.getTopicAndReplyNumList(page.getStart(),page.getPageSize());
+        page.setItems(countLit);
+        return page;
+    }
+
+    public Node findNodeById(String nodeId) {
+        if (StringUtils.isNumeric(nodeId)){
+            Node node = nodeDao.findNodeById(Integer.valueOf(nodeId));
+            if (node != null){
+                return node;
+            }else{
+                throw new ServiceException("此节点不存在");
+            }
+
+        }else{
+            throw new ServiceException("参数异常");
+        }
+
+    }
+
+    public void updateTopicNode(String topicid, String nodeid) {
+        if(StringUtils.isNumeric(topicid)&& StringUtils.isNumeric(nodeid)){
+            Topic topic = topicDao.findTopicById(topicid);
+            //更新topic的nodeid
+            topic.setNodeid(Integer.valueOf(nodeid));
+            topicDao.update(topic);
+            //更新node表中的topicnum字段
+            updatNode(topic.getNodeid(),nodeid);
+        }else{
+            throw new ServiceException("参数异常");
+        }
+    }
+
+    private void updatNode(Integer lastNodeId, String nodeid) {
+        if (lastNodeId != Integer.valueOf(nodeid)) {
+            //更新node表，使得原來的node的topicnum -1
+            Node lastNode = nodeDao.findNodeById(lastNodeId);
+            lastNode.setTopicnum(lastNode.getTopicnum() - 1);
+            nodeDao.update(lastNode);
+            //更新node表，使得新的node的topicnum + 1
+            Node newNode = nodeDao.findNodeById(Integer.valueOf(nodeid));
+            newNode.setTopicnum(newNode.getTopicnum() + 1);
+            nodeDao.update(newNode);
+        }
 
     }
 }

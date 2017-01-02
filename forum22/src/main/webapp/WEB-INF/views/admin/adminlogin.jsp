@@ -12,7 +12,7 @@
 <div class="header-bar">
     <div class="container">
         <a href="#" class="brand">
-            <i class="fa fa-user"></i>
+            <i class="fa fa-reddit-alien"></i>
         </a>
     </div>
 </div>
@@ -51,7 +51,7 @@
 <!--container end-->
 <script src="/static/js/jquery-1.11.1.js"></script>
 <script src="/static/js/jquery.validate.min.js"></script>
-<script src="/static/js/admin/adminlogin.js"></script>
+<script src="/static/js/admin/AdminLogin.js"></script>
 
 </body>
 </html>

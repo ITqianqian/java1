@@ -9,7 +9,7 @@
             <li><a href="/admin/user">用户管理</a></li>
         </ul>
         <ul class="nav pull-right">
-            <li><a href="/admin/loginOut">安全退出</a></li>
+            <li><a href="/admin/loginout">安全退出</a></li>
         </ul>
     </div>
 </div>

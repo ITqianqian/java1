@@ -5,6 +5,8 @@ import com.zqn.dao.NodeDao;
 import com.zqn.dao.ReplyDao;
 import com.zqn.dao.TopicDao;
 import com.zqn.entitiy.Admin;
+import com.zqn.entitiy.Node;
+import com.zqn.entitiy.Topic;
 import com.zqn.exception.ServiceException;
 import com.zqn.util.Config;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -35,8 +37,24 @@ public class AdminService {
 
     }
 
-    public void delTopicById(String id) {
-        adminDao.delTopicbyid(id);
+
+    public void deleteTopicById(String id) {
+        //删除主题的回复
+        replyDao.delByTopicId(id);
+        //更新节点下的主题数量
+        //1.根据topicId 获取 nodeId
+        Topic topic = topicDao.findTopicById(id);
+        if(topic != null ){
+            //2.根据nodeid 获取node
+            Node node = nodeDao.findNodeById(topic.getNodeid());
+            //3.更新node
+            node.setTopicnum(node.getTopicnum() - 1);
+            nodeDao.update(node);
+            //删除主题
+            topicDao.delById(id);
+        }else {
+            throw new ServiceException("该主题不存在或已删除");
+        }
     }
 }
 
