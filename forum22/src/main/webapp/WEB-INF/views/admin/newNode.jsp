@@ -55,7 +55,7 @@
                 $.ajax({
                     url:"/admin/newnode",
                     type:'post',
-                    data:$("#updateForm").serialize(),
+                    data:$("#addForm").serialize(),
                     success:function (json) {
                         if (json.state == "success"){
                             swal({title:"添加成功"},function () {
