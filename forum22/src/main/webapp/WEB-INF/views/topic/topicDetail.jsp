@@ -18,11 +18,11 @@
         .simditor .simditor-body {
             min-height: 100px;
         }
-        .topic-body img{
+       /* .topic-body img{
             width: 200px;
             height:266px;
 
-        }
+        }*/
 
         pre {
             padding: 0px;

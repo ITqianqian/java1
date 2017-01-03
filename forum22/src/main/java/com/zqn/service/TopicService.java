@@ -62,9 +62,9 @@ public class TopicService {
                topic.setUser(user);
                topic.setNode(node);
 
-                //更新topic表中的clicknum字段
+              /*  //更新topic表中的clicknum字段
                 topic.setClicknum(topic.getClicknum()+1);
-                topicDao.update(topic);
+                topicDao.update(topic);*/
                return topic;
 
             }else {

@@ -129,8 +129,9 @@
             $.post("/setting?action=avatar",{"fileKey":fileKey})
                 .done(function (data) {
                     if(data.state=='success'){
-                        var url="http://oifocnk31.bkt.clouddn.com/"+fileKey;
+                        var url="http://oib40jpn2.bkt.clouddn.com/"+fileKey;
                         $("#avatar").attr("src",url+"?imageView2/1/w/40/h/40");
+                        
                         $("#navbar_avatar").attr("src",url+"?imageView2/1/w/20/h/20");
 
                         alert("头像上传成功");
