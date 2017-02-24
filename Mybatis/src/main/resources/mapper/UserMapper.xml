@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zqn.mapper.UserMapper">
+
+    <select id="findById" parameterType="int" resultType="User">
+      SELECT * FROM t_user WHERE id = #{id}
+    </select>
+    <select id="findAll" resultType="User">
+        SELECT * FROM t_user
+    </select>
+
+    <select id="findByUsernameAndPassword" resultType="com.zqn.pojo.User">
+        SELECT * FROM t_user WHERE username = #{username} AND password=#{password}
+    </select>
+
+    <select id="findByParam" parameterType="map" resultType="com.zqn.pojo.User">
+        SELECT  * FROM  t_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="username != null and username !='' ">
+                username= #{username}
+            </if>
+            <if test="password != null and password !='' ">
+                And password = #{password}
+            </if>
+
+        </trim>
+       <!-- <where>
+        &lt;!&ndash;<choose>
+            <when test="username != null and username !='' ">
+              username= #{username}
+            </when>
+            <when test="password != null and password !='' ">
+              password = #{password}
+            </when>
+            <otherwise>
+
+            </otherwise>
+
+        </choose>&ndash;&gt;
+            <if test="username != null and username !='' ">
+                username= #{username}
+            </if>
+            <if test="password != null and password !='' ">
+                And password = #{password}
+            </if>
+        </where>-->
+    </select>
+
+    <insert id="save" parameterType="User">
+        INSERT INTO t_user (username,password)VALUES (#{username},#{password})
+    </insert>
+    <select id="findByIds" resultType="com.zqn.pojo.User">
+        SELECT * FROM t_user WHERE id IN
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+    <insert id="Save" >
+        INSERT INTO t_user(username,password)
+        VALUES
+        <foreach collection="list" item="user"  separator=",">
+            (#{user.username},#{user.password})
+        </foreach>
+    </insert>
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gongcheng.mapper.DeviceMapper">
+    <insert id="addNewDevice" parameterType="Device">
+        INSERT  INTO t_device(device_name,unit,total_num,current_num,price)
+        VALUES (#{deviceName},#{unit},#{totalNum},#{currentNum},#{price})
+    </insert>
+    <select id="findAll" resultType="com.gongcheng.pojo.Device">
+        SELECT * FROM t_device
+    </select>
+
+    <select id="findDeviceByPage" resultType="com.gongcheng.pojo.Device">
+        SELECT * FROM t_device limit ${start},${length}
+
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_device
+    </select>
+
+    <select id="sarchCount" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM t_device
+        <where>
+            <if test="deviceName != null and deviceName != ''">
+                name like concat('%',#{deviceName},'%')
+            </if>
+        </where>
+    </select>
+
+
+    <select id="findDeviceBySarchparm" resultType="com.gongcheng.pojo.Device">
+        SELECT * FROM t_device
+        <where>
+            <if test="deviceName != null and deviceName != ''">
+                name like concat('%',#{deviceName},'%')
+            </if>
+        </where>
+        <if test="orderType != null and orderType != '' and orderColumn != null and orderColumn != ''">
+            ORDER BY ${orderColumn} ${orderType}
+        </if>
+        limit ${start},${length}
+    </select>
+
+    <delete id="delDeviceById">
+        DELETE FROM t_device WHERE id=#{id}
+    </delete>
+
+
+</mapper>

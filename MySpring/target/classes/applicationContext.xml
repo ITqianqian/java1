@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+<!--  基于注解的bean管理 和IOC   !-->
+    <context:component-scan base-package="com.zqn"/>
+
+
+
+
+
+
+    <!-- 配置数据源 （连接数据池） !-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql:///db_2"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+
+    </bean>
+
+
+
+    <!--JDBCTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- &lt;!&ndash;  基于注解的Aop  !&ndash;&gt;
+       <aop:aspectj-autoproxy/>-->
+
+    <!--   <bean id="userDaoImpl" class="com.zqn.dao.impl.UserDaoImpl"/>
+        <bean id = "userService" class="com.zqn.service.UserServiceImpl">
+            <property name="userDao" ref="userDaoImpl"/>
+        </bean>
+
+        <bean id ="myAspect" class="com.zqn.aop.MyAspect"/>
+        <aop:config>
+            <aop:aspect ref="myAspect">
+                <aop:pointcut id="pointcut" expression="execution(* com.zqn.service..*.*(..))"/>
+                <aop:before method="beforeAdvice" pointcut-ref="pointcut"  />
+                <aop:after-returning method="afterAdvice" pointcut-ref="pointcut" returning="result"/>
+                <aop:after-throwing method="exceptionAdvice" pointcut-ref="pointcut" throwing="ex"/>
+
+
+            </aop:aspect>
+        </aop:config>-->
+
+
+
+
+
+
+
+
+    <!--构造方法注入 依赖程度最高
+        <bean id="userService" class="com.zqn.service.UserServiceImpl">
+            <constructor-arg name = "userDao" ref="userDaoImpl"/>
+        </bean>-->
+
+
+    <!--Set 注入
+        <bean id ="userServiceImpl" class="com.zqn.service.UserServiceImpl">
+
+        <property name="userDao" ref="userDaoImpl"/>
+        <property name="name" value="zhangsan"/>
+        <property name="map" >
+            <map>
+                <entry key="k1" value="v1"/>
+                <entry key="k2" value="v2"/>
+            </map>
+        </property>
+        <property name="list">
+            <list>
+                <value>A1</value>
+                <value>A2</value>
+            </list>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="P1">v1</prop>
+                <prop key="p2">V2</prop>
+            </props>
+        </property>
+    </bean>-->
+
+
+
+
+</beans>

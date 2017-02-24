@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gongcheng.mapper.UserMapper">
+    <cache/>
+    <select id="findAll" resultType="com.gongcheng.pojo.User">
+        SELECT * FROM t_user
+    </select>
+    <insert id="save" >
+        insert into t_user(user_name,password) VALUES (#{userName},#{password})
+    </insert>
+    <delete id="delUser">
+        DELETE FROM t_user where id = #{id}
+    </delete>
+    <select id="findById" resultType="com.gongcheng.pojo.User">
+        SELECT * FROM t_user WHERE id=#{id}
+    </select>
+    <select id="findByName" resultType="com.gongcheng.pojo.User">
+        SELECT * FROM t_user WHERE user_name=#{userName}
+    </select>
+
+
+
+
+
+
+</mapper>

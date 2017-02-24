@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 配置别名 -->
+    <typeAliases>
+        <typeAlias type="com.zqn.pojo.User" alias="User"></typeAlias>
+        <typeAlias type="com.zqn.pojo.Node" alias="Node"></typeAlias>
+        <typeAlias type="com.zqn.pojo.Topic" alias="Topic"></typeAlias>
+
+    </typeAliases>
+
+    <!-- 配置环境变量 -->
+    <environments default="dev">
+        <environment id="dev">
+            <!-- 配置事务管理器 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置数据库连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql:///db_2"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="root"></property>
+
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 加载 mapper.xml文件 -->
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"></mapper>
+        <mapper resource="mapper/NodeMapper.xml"></mapper>
+        <mapper resource="mapper/TopicMapper.xml"></mapper>
+    </mappers>
+</configuration>

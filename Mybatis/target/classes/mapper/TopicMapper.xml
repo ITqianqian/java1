@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zqn.mapper.TopicMapper">
+
+
+    <insert id="save" parameterType="Topic">
+        INSERT INTO t_topic (topicname,nodeid) VALUES (#{topicname},#{nodeid})
+    </insert>
+
+    <update id="update" parameterType="Topic">
+        UPDATE t_topic SET topicname= #{topicname},nodeid=#{nodeid} WHERE id=#{id}
+    </update>
+    <select id="findById" parameterType="int" resultType="Topic">
+        SELECT * FROM t_topic WHERE id = #{id}
+    </select>
+    <select id="findAll" resultMap="AllMap">
+        SELECT * FROM t_topic
+    </select>
+
+    <select id="findByNodeid" parameterType="int" resultType="Topic">
+        SELECT
+            t_topic.id,topicname,nodeid,
+            t_node.id AS 'node.id',nodename AS 'node.nodename'
+        FROM
+            t_topic
+        INNER JOIN t_node ON t_topic.nodeid = t_node.id
+        WHERE
+            t_topic.nodeid = #{node.id}
+    </select>
+
+
+    <resultMap id="AllMap" type="Topic">
+        <id column="id" property="id" />
+        <result property="topicname" column="topicname"/>
+        <result property="nodeid" column="nodeid"></result>
+        <association property="node" javaType="Node" column="nodeid"
+                     select="com.zqn.mapper.NodeMapper.findById"></association>
+    </resultMap>
+
+
+    <!--配置结果集映射-->
+    <!--<resultMap id="empMap" type="Employee">
+        <id column="id" property="id"/>
+        <result column="empname" property="empname"/>
+        <result column="deptid" property="deptid"/>
+        <association property="dept" javaType="Dept" column="deptid">
+            //id 是 dept 表里面的id
+            <id property="id" column="deptid"></id>
+            <result property="deptname" column="deptname"></result>
+        </association>
+    </resultMap>-->
+    <insert id="bachSave" >
+        INSERT INTO t_topic (topicname,nodeid)
+        VALUES
+        <foreach collection="list" item="topic" separator=",">
+
+            (#{topic.topicname}, #{topic.nodeid})
+        </foreach>
+    </insert>
+</mapper>

@@ -54,4 +54,10 @@ public class UserDao {
         String sql = "select tll.logintime lastLoginTime,tll.ip loginIP,tu.id userId,tu.username username,tu.createtime ,tu.state userState from t_loginlog tll ,t_user tu where userid = ? order by logintime desc limit 0,1";
         return DbHelp.query(sql,new BeanHandler<UserVo>(UserVo.class),id);
     }
+
+    public List<User> findAllUser() {
+        String sql="select * from t_user";
+        return DbHelp.query(sql,new BeanListHandler<User>(User.class));
+
+    }
 }

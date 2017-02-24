@@ -25,6 +25,7 @@ public class User implements Serializable{
     private Timestamp createtime;
     private String avatar;
 
+
     public Integer getId() {
         return id;
     }
